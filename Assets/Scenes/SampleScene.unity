@@ -269,9 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b60069dafa17d4abf976a65104df55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageToFadeOut: {fileID: 730597399}
-  imageToFadeIn: {fileID: 410173115}
-  fadeDuration: 1
+  _graphicToFadeOut: {fileID: 730597399}
+  _graphicToFadeIn: {fileID: 410173115}
+  _fadeDuration: 1
 --- !u!1 &410173113
 GameObject:
   m_ObjectHideFlags: 0
