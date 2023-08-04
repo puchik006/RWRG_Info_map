@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public static class GraphicExtensions
 {
-    public static IEnumerator FadeOut(this Graphic graphicToFadeOut, float fadeDuration)
+    public static IEnumerator FadeOut(this Graphic graphicToFadeOut, float fadeDuration, Action callbackAction = null)
     {
         float elapsedTime = 0f;
         Color startColor = graphicToFadeOut.color;
@@ -19,9 +20,10 @@ public static class GraphicExtensions
         }
 
         graphicToFadeOut.gameObject.SetActive(false);
+        callbackAction?.Invoke();
     }
 
-    public static IEnumerator FadeIn(this Graphic graphicToFadeIn, float fadeDuration)
+    public static IEnumerator FadeIn(this Graphic graphicToFadeIn, float fadeDuration, Action callbackAction = null)
     {
         graphicToFadeIn.gameObject.SetActive(true);
         float elapsedTime = 0f;
@@ -37,5 +39,20 @@ public static class GraphicExtensions
         }
 
         graphicToFadeIn.color = new Color(endColor.r, endColor.g, endColor.b, 1f);
+        callbackAction?.Invoke();
+    }
+
+    public static IEnumerator Pulse(this Graphic graphicToPulse, float pulseSpeed, float pulseAmplitude)
+    {
+        Vector3 originalScale = graphicToPulse.transform.localScale;
+        float sinTime = 0f;
+
+        while (true)
+        {
+            sinTime += Time.deltaTime;
+            float newScale = originalScale.x + Mathf.Sin(sinTime * pulseSpeed) * pulseAmplitude;
+            graphicToPulse.transform.localScale = new Vector3(newScale, newScale, 1f);
+            yield return null;
+        }
     }
 }
