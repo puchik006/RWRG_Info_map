@@ -5,11 +5,13 @@ using System;
 
 public static class GraphicExtensions
 {
-    public static IEnumerator FadeOut(this Graphic graphicToFadeOut, float fadeDuration, Action callbackAction = null)
+    public static IEnumerator FadeOut(this Graphic graphicToFadeOut, float fadeDuration, Action callbackAction = null, float pauseOnStart = 0f)
     {
+        yield return new WaitForSeconds(pauseOnStart);
+
         float elapsedTime = 0f;
         Color startColor = graphicToFadeOut.color;
-        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        Color endColor = new(startColor.r, startColor.g, startColor.b, 0f);
 
         while (elapsedTime < fadeDuration)
         {
@@ -23,12 +25,15 @@ public static class GraphicExtensions
         callbackAction?.Invoke();
     }
 
-    public static IEnumerator FadeIn(this Graphic graphicToFadeIn, float fadeDuration, Action callbackAction = null)
+    public static IEnumerator FadeIn(this Graphic graphicToFadeIn, float fadeDuration, Action callbackAction = null, float pauseOnStart = 0f)
     {
+        yield return new WaitForSeconds(pauseOnStart);
+
         graphicToFadeIn.gameObject.SetActive(true);
         float elapsedTime = 0f;
-        Color startColor = new Color(1f, 1f, 1f, 0f);
-        Color endColor = new Color(1f, 1f, 1f, 1f);
+        Color originalColor = graphicToFadeIn.color;
+        Color startColor = new(originalColor.r, originalColor.g, originalColor.b, 0f);
+        Color endColor = new(startColor.r, startColor.g, startColor.b, 1f);
 
         while (elapsedTime < fadeDuration)
         {

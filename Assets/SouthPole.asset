@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8530c31278a28ea48b6950fea85711a7, type: 3}
+  m_Name: SouthPole
+  m_EditorClassIdentifier: 
+  _images:
+  - {fileID: 21300000, guid: b5328b3931ac0e04db83e4a4bcd7b6dc, type: 3}
+  - {fileID: 21300000, guid: 91038f92739bda247a2f14beef88be9a, type: 3}
+  - {fileID: 21300000, guid: 3f394861e0b01af40b37194377d5531c, type: 3}
+  _discription: sdf;jbsdfjsdf;jlsdflj;
