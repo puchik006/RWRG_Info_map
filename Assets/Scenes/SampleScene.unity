@@ -3110,7 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd6b0e5529007cf428a9d7112073be50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inactivityThreshold: 5
+  _inactivityThreshold: 30
   _trackedButtons:
   - {fileID: 1667686477}
   - {fileID: 1915360225}
