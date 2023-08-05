@@ -71,7 +71,7 @@ public static class GraphicExtensions
 
     public static void TransparecyOn(this Graphic graphic)
     {
-        graphic.gameObject.SetActive(true);
+        graphic.gameObject.SetActive(false);
         Color currentColor = graphic.color;
         currentColor.a = 0f;
         graphic.color = currentColor;

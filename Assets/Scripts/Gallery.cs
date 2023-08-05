@@ -13,6 +13,7 @@ public class Gallery : MonoBehaviour
 
     private void Awake()
     {
+        InactivityManager.ApplicationReseted += OnApplicationReseted;
         InfoPointHandler.GalleryOpened += OnGalleryOpened;
 
         _leftArrowButton.onClick.AddListener(ShowPreviousImage);
@@ -64,5 +65,10 @@ public class Gallery : MonoBehaviour
         _leftArrowButton.gameObject.SetActive(false);
         _rightArrowButton.gameObject.SetActive(false);
         _closeButton.gameObject.SetActive(false);
+    }
+
+    private void OnApplicationReseted()
+    {
+        CloseGalleryView();
     }
 }

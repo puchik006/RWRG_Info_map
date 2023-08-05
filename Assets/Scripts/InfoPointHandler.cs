@@ -15,6 +15,7 @@ public class InfoPointHandler: MonoBehaviour
 
     private void Awake()
     {
+        InactivityManager.ApplicationReseted += OnAplicationReseted;
         _mainmage.sprite = _card.Images[default];
         _discription.text = _card.Discription;
         _openGalleryButton.onClick.AddListener(OpenGallery);
@@ -23,5 +24,11 @@ public class InfoPointHandler: MonoBehaviour
     private void OpenGallery()
     {
         GalleryOpened?.Invoke(_card.Images);
+    }
+
+    private void OnAplicationReseted()
+    {
+        //Debug.Log("asda");
+        //_mainmage.gameObject.SetActive(false);
     }
 }

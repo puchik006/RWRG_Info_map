@@ -16,6 +16,7 @@ public class ZoomingImage : MonoBehaviour
 
     private void Awake()
     {
+        InactivityManager.ApplicationReseted += OnApplicationReseted;
         _imageToZoom = GetComponent<Image>();
     }
 
@@ -26,6 +27,11 @@ public class ZoomingImage : MonoBehaviour
         _zoomInButton.onClick.AddListener(() => _imageToZoom.ZoomIn(_zoomStep,_maxZoom));
         _zoomOutButton.onClick.AddListener(() => _imageToZoom.ZoomOut(_zoomStep, _minZoom));
         _resetZoomButton.onClick.AddListener(() => _imageToZoom.ResetZoom(_originalScale));
+    }
+
+    private void OnApplicationReseted()
+    {
+        _imageToZoom.ResetZoom(_originalScale);
     }
 }
 

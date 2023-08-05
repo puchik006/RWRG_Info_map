@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leaveButtonActive: 1
+  _isNeedTobeReseted: 0
   _objectsToFadeOut:
   - {fileID: 3399757126574543349}
   - {fileID: 7317402583157157931}
@@ -670,12 +671,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _leaveButtonActive: 1
+  _isNeedTobeReseted: 1
   _objectsToFadeOut: []
   _objectsToFadeIn:
   - {fileID: 7317402583157157931}
   - {fileID: 3399757126574543349}
   - {fileID: 2197459294036312479}
   - {fileID: 3580780095508145042}
+  - {fileID: 8364403891561806739}
   _fadeDuration: 1
   _pauseBeforeFadeIn: 0
 --- !u!1 &7750727889800645447

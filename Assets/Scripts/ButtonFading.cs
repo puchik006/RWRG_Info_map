@@ -7,6 +7,7 @@ public class ButtonFading : MonoBehaviour
 {
     private Button _button;
     [SerializeField] private bool _leaveButtonActive = true;
+    [SerializeField] private bool _isNeedTobeReseted = false;
     [SerializeField] private List<Graphic> _objectsToFadeOut;
     [SerializeField] private List<Graphic> _objectsToFadeIn;
     [SerializeField] private float _fadeDuration = 1.0f;
@@ -19,18 +20,32 @@ public class ButtonFading : MonoBehaviour
         _button.onClick.AddListener(OnButtonClicked);
     }
 
+    private void OnDisable()
+    {
+        OnAplicationReseted();
+    }
+
     private void OnButtonClicked()
     {
-         _button.enabled = _leaveButtonActive;
+        _button.enabled = _leaveButtonActive;
         _objectsToFadeOut.ForEach(e => StartCoroutine(e.FadeOut(_fadeDuration)));
         _objectsToFadeIn.ForEach(e => StartCoroutine(e.FadeIn(_fadeDuration,pauseOnStart: _pauseBeforeFadeIn)));
     }
 
     private void OnAplicationReseted()
     {
-        _button.enabled = true;
-        _objectsToFadeOut.ForEach(e => e.TransparecyOff());
-        _objectsToFadeIn.ForEach(e => e.TransparecyOn());
+        if (_isNeedTobeReseted)
+        {
+            _button.enabled = true;
+            _objectsToFadeOut.ForEach(e => e.TransparecyOff());
+            _objectsToFadeIn.ForEach(e => e.TransparecyOn());
+        }
+        else
+        {
+            _button.enabled = true;
+            _objectsToFadeOut.ForEach(e => e.TransparecyOn());
+            _objectsToFadeIn.ForEach(e => e.TransparecyOff());
+        }
     }
 }
 
