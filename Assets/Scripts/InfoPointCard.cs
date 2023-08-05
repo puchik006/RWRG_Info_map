@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InfoPointCard: ScriptableObject
 {
     [SerializeField] private List<Sprite> _images;
-    [SerializeField] private string _discription;
+    [SerializeField][TextArea(3,10)] private string _discription;
 
     public List<Sprite> Images => _images;
     public string Discription => _discription;

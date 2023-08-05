@@ -13,16 +13,27 @@ public class Gallery : MonoBehaviour
 
     private void Awake()
     {
-        InfoPointHandler.GalleryOpened += (List<Sprite> e) => _images = e;
+        InfoPointHandler.GalleryOpened += OnGalleryOpenned;
     }
 
-    private void Start()
+    private void OnGalleryOpenned(List<Sprite> images)
     {
+        _images = images;
+
         _leftArrowButton.onClick.AddListener(ShowPreviousImage);
         _rightArrowButton.onClick.AddListener(ShowNextImage);
-        _closeButton.onClick.AddListener(CloseGallery);
+        _closeButton.onClick.AddListener(CloseGalleryView);
 
+        OpenGalleryView();
         ShowImageAtIndex(currentIndex);
+    }
+
+    private void OpenGalleryView()
+    {
+        _imageView.gameObject.SetActive(true);
+        _leftArrowButton.gameObject.SetActive(true);
+        _rightArrowButton.gameObject.SetActive(true);
+        _closeButton.gameObject.SetActive(true);
     }
 
     private void ShowImageAtIndex(int index)
@@ -45,8 +56,11 @@ public class Gallery : MonoBehaviour
         ShowImageAtIndex(currentIndex);
     }
 
-    private void CloseGallery()
+    private void CloseGalleryView()
     {
-        gameObject.SetActive(false);
+        _imageView.gameObject.SetActive(false);
+        _leftArrowButton.gameObject.SetActive(false);
+        _rightArrowButton.gameObject.SetActive(false);
+        _closeButton.gameObject.SetActive(false);
     }
 }
