@@ -13,7 +13,7 @@ public class PulsingImage : MonoBehaviour
         _imageToPulse = GetComponent<Graphic>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(_imageToPulse.Pulse(_pulseSpeed, _pulseAmplitude));
     }

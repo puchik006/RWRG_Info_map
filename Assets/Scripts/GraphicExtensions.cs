@@ -60,4 +60,20 @@ public static class GraphicExtensions
             yield return null;
         }
     }
+
+    public static void TransparecyOff(this Graphic graphic)
+    {
+        graphic.gameObject.SetActive(true);
+        Color currentColor = graphic.color;
+        currentColor.a = 1f;
+        graphic.color = currentColor;
+    }
+
+    public static void TransparecyOn(this Graphic graphic)
+    {
+        graphic.gameObject.SetActive(true);
+        Color currentColor = graphic.color;
+        currentColor.a = 0f;
+        graphic.color = currentColor;
+    }
 }

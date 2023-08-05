@@ -13,17 +13,19 @@ public class Gallery : MonoBehaviour
 
     private void Awake()
     {
-        InfoPointHandler.GalleryOpened += OnGalleryOpenned;
-    }
-
-    private void OnGalleryOpenned(List<Sprite> images)
-    {
-        _images = images;
+        InfoPointHandler.GalleryOpened += OnGalleryOpened;
 
         _leftArrowButton.onClick.AddListener(ShowPreviousImage);
         _rightArrowButton.onClick.AddListener(ShowNextImage);
         _closeButton.onClick.AddListener(CloseGalleryView);
 
+        CloseGalleryView();
+    }
+
+    private void OnGalleryOpened(List<Sprite> images)
+    {
+        _images = images;
+        currentIndex = default;
         OpenGalleryView();
         ShowImageAtIndex(currentIndex);
     }
